@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Biodata
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+  	<button class="add" ion-button item-right icon-right margin-bottom color="primary" outline (click)="tambahData()">Tambah Data<ion-icon name="add"></ion-icon></button>
+  </ion-item>
+
+  <ion-item *ngFor="let item of items">
+  	<h2>{{item.namaDepan}}</h2>
+  	<button ion-button color="primary" item-right outline (click)="lihatData({record:item})">Lihat</button>
+  </ion-item>
+</ion-content>

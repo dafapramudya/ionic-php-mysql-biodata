@@ -1,0 +1,81 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{pageTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div>
+	<ion-item *ngIf="isEdited && !hideForm">
+		<button ion-button item-right color="danger" icon-right text-center block outline (click)="hapusData()">Hapus</button>
+	</ion-item>
+
+	<div *ngIf="hideForm">
+		<ion-item class="post-entry-message" text-wrap>
+			<p>Untuk mengedit atau menghapus data</p>
+			<p>Kembali ke halaman utama</p>
+		</ion-item>
+	</div>
+
+	<div *ngIf="!hideForm">
+		<form [formGroup]="form" (ngSubmit)="simpanData()">
+
+		<ion-list>
+			<ion-item-group>
+				<ion-item-divider color="light">Nama Depan</ion-item-divider>
+				<ion-item>
+					<ion-input type="text" placeholder="Nama Depan. . . " formControlName="namaDepan" [(ngModel)]="biodataNamaDepan"></ion-input>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item-group>
+				<ion-item-divider color="light">Nama Belakang</ion-item-divider>
+				<ion-item>
+					<ion-input type="text" placeholder="Nama Belakang. . . " formControlName="namaBelakang" [(ngModel)]="biodataNamaBelakang"></ion-input>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item-group radio-group formControlName="jenisKelamin" [(ngModel)]="biodataJenisKelamin">
+				<ion-item-divider color="light">Jenis Kelamin</ion-item-divider>
+				<ion-item>
+					<ion-label>Laki-Laki</ion-label>
+					<ion-radio value="Laki-Laki"></ion-radio>
+				</ion-item>
+				<ion-item>
+					<ion-label>Perempuan</ion-label>
+					<ion-radio value="Perempuan"></ion-radio>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item-group>
+				<ion-item-divider color="light">Alamat</ion-item-divider>
+				<ion-item>
+					<ion-textarea placeholder="Alamat. . . " formControlName="alamat" rows="6" [(ngModel)]="biodataAlamat"></ion-textarea>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item-group>
+				<ion-item-divider color="light">No Telepon</ion-item-divider>
+				<ion-item>
+					<ion-input type="text" placeholder="Nomor Telepon. . . " formControlName="noTelp" [(ngModel)]="biodataNoTelp"></ion-input>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item-group>
+				<ion-item-divider color="light">Email</ion-item-divider>
+				<ion-item>
+					<ion-input type="email" placeholder="Email. . . " formControlName="email" [(ngModel)]="biodataEmail"></ion-input>
+				</ion-item>
+			</ion-item-group>
+
+			<ion-item>
+				<button ion-button color="primary" icon-right text-center  block outline [disabled]="!form.valid">Simpan</button>
+			</ion-item>
+		</ion-list>
+	</form>
+	</div>
+</div>
+</ion-content>
